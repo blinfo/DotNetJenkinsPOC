@@ -1,9 +1,4 @@
 pipeline {
-    agent {
-      label {
-            label "windows"
-      }
-    }
     options {
         disableConcurrentBuilds()
   }
@@ -15,6 +10,11 @@ pipeline {
   }
   stages {
     stage('Build') {
+        agent {
+          label {
+                label "windows"
+          }
+        }
         steps {
             dir('HelloWorld') {
                 bat 'dotnet build'
