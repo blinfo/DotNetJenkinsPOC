@@ -25,7 +25,7 @@ pipeline {
   post {
     failure {
       script {
-        COMMITER_EMAIL = bat(returnStdout: true, script: 'git log -1 --pretty=format:%ae')
+        COMMITER_EMAIL = bat(returnStdout: true, script: "git log -1 --pretty=format:%ae")
       }
       emailext body: '${JELLY_SCRIPT,template="bl"}', subject: "${JOB_NAME} build ${BUILD_NUMBER} ${currentBuild.currentResult}", to: "${COMMITER_EMAIL}"
     }
